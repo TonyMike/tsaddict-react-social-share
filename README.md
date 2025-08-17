@@ -4,7 +4,7 @@ A lightweight, modern React component library for social media sharing with beau
 
 ## 🚀 Features
 
-- **6 Social Platforms**: Facebook, Twitter, LinkedIn, WhatsApp, Telegram, and Reddit
+- **9 Social Platforms**: Facebook, X (Twitter), LinkedIn, WhatsApp, Telegram, Reddit, Email, Messenger, and Discord
 - **Beautiful Animations**: Smooth hover effects with scale transforms and color transitions
 - **Tailwind CSS Ready**: Built with Tailwind CSS for easy customization (requires Tailwind CSS setup)
 - **TypeScript Support**: Full TypeScript support with proper type definitions
@@ -12,6 +12,7 @@ A lightweight, modern React component library for social media sharing with beau
 - **Responsive Design**: Mobile-friendly with proper touch targets
 - **Customizable**: Extensive customization options for styling and behavior
 - **Lightweight**: Minimal bundle size with tree-shaking support
+- **Custom Icons**: Support for custom icon components and props
 
 ## 📦 Installation
 
@@ -84,10 +85,10 @@ This package requires the following peer dependencies:
 
 ```json
 {
-  "react": ">=17.0.0",
-  "react-dom": ">=17.0.0",
+  "react": "^19.1.1",
+  "react-dom": "^19.1.1",
   "react-icons": ">=4.0.0",
-  "tailwindcss": ">=3.0.0"
+  "tailwindcss": ">=3.0.0 || ^4.0.0-alpha"
 }
 ```
 
@@ -142,13 +143,16 @@ Individual social media share button component.
 #### Platform Values
 
 ```typescript
-type Platform =
-  | "facebook"
-  | "twitter"
-  | "linkedin"
-  | "whatsapp"
-  | "telegram"
-  | "reddit";
+type Platform = 
+  | "facebook" 
+  | "X" 
+  | "linkedin" 
+  | "whatsapp" 
+  | "telegram" 
+  | "reddit"
+  | "email"
+  | "messenger"
+  | "discord";
 ```
 
 #### Example
@@ -224,11 +228,14 @@ The components use Tailwind CSS classes and can be easily customized:
 Each platform has its brand colors by default:
 
 - **Facebook**: Blue (`bg-blue-600`)
-- **Twitter**: Sky (`bg-sky-500`)
+- **X (Twitter)**: Black (`bg-black`)
 - **LinkedIn**: Blue (`bg-blue-700`)
 - **WhatsApp**: Green (`bg-green-500`)
 - **Telegram**: Sky (`bg-sky-400`)
 - **Reddit**: Orange (`bg-orange-500`)
+- **Email**: Gray (`bg-gray-500`)
+- **Messenger**: Blue (`bg-blue-500`)
+- **Discord**: Purple (`bg-purple-500`)
 
 ### Animation Classes
 
@@ -238,16 +245,31 @@ The components include smooth animations:
 - **Active**: Scale down (`active:scale-95`)
 - **Transitions**: Smooth duration (`transition-all duration-300`)
 
+### Custom Icons
+
+You can override the default icons with custom ones:
+
+```tsx
+import { FaCustomIcon } from 'react-icons/fa';
+
+<SocialButton
+  platform="facebook"
+  url="https://example.com"
+  icon={FaCustomIcon}
+  iconProps={{ size: 24, color: "white" }}
+/>
+```
+
 ## 🔧 Advanced Usage
 
 ### Conditional Rendering
 
 ```tsx
 function ShareSection({ article, user }) {
-  const platforms = user.isPremium
-    ? ["facebook", "twitter", "linkedin", "whatsapp", "telegram", "reddit"]
-    : ["facebook", "twitter"];
-
+  const platforms = user.isPremium 
+    ? ["facebook", "X", "linkedin", "whatsapp", "telegram", "reddit", "email", "messenger", "discord"]
+    : ["facebook", "X"];
+    
   return (
     <SocialShareGroup
       url={article.url}
@@ -263,9 +285,11 @@ function ShareSection({ article, user }) {
 ```tsx
 function ShareButtons({ post }) {
   const labels = {
-    twitter: `Share "${post.title}" on Twitter`,
+    X: `Share "${post.title}" on X`,
     linkedin: `Share "${post.title}" on LinkedIn`,
     facebook: `Share "${post.title}" on Facebook`,
+    email: `Email "${post.title}" to friends`,
+    messenger: `Send "${post.title}" via Messenger`
   };
 
   return <SocialShareGroup url={post.url} text={post.title} labels={labels} />;
@@ -321,9 +345,9 @@ import { render, screen } from "@testing-library/react";
 import { SocialButton } from "@tsaddict/react-social-share";
 
 test("renders social button with correct platform", () => {
-  render(<SocialButton platform="twitter" url="https://example.com" />);
+  render(<SocialButton platform="X" url="https://example.com" />);
 
-  expect(screen.getByLabelText("Share on Twitter")).toBeInTheDocument();
+  expect(screen.getByLabelText("Share on X")).toBeInTheDocument();
 });
 ```
 
@@ -350,6 +374,14 @@ If you encounter any issues or have questions:
 3. Include your React version, browser, and reproduction steps
 
 ## 🔄 Changelog
+
+### v0.1.5
+
+- Added 3 new platforms: Email, Messenger, and Discord
+- Renamed "twitter" to "X" to match current branding
+- Added custom icon support with `icon` and `iconProps` props
+- Enhanced accessibility with `data-testid` attributes
+- Improved TypeScript types and component props
 
 ### v0.1.0
 
