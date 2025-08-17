@@ -4,7 +4,10 @@ export type Platform =
   | "whatsapp"
   | "telegram"
   | "reddit"
-  | "X";
+  | "X"
+  | "email"
+  | "messenger"
+  | "discord";
 
 export const getShareUrl = (platform: Platform, url: string, text?: string) => {
   switch (platform) {
@@ -34,5 +37,15 @@ export const getShareUrl = (platform: Platform, url: string, text?: string) => {
       return `https://x.com/intent/tweet?url=${encodeURIComponent(
         url
       )}&text=${encodeURIComponent(text || "")}`;
+    case "email":
+      return `mailto:?subject=${encodeURIComponent(
+        text || ""
+      )}&body=${encodeURIComponent(url)}`;
+    case "messenger":
+      return `https://www.facebook.com/dialog/send?app_id=1234567890&link=${encodeURIComponent(
+        url
+      )}`;
+    case "discord":
+      return `https://discord.com/invite/${encodeURIComponent(url)}`;
   }
 };

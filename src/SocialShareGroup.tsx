@@ -19,13 +19,16 @@ const ALL: Platform[] = [
   "whatsapp",
   "telegram",
   "reddit",
+  "email",
+  "messenger",
+  "discord",
 ];
 
 const SocialShareGroup: React.FC<Props> = ({
   url,
   text,
   platforms = ALL,
-  wrapClassName = "flex flex-wrap items-center gap-3",
+  wrapClassName = "flex flex-wrap items-center gap-5",
   buttonClassName,
   iconClassName,
   labels = {},

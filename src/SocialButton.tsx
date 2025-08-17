@@ -5,6 +5,9 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaReddit,
+  FaFacebookMessenger,
+  FaDiscord,
+  FaEnvelope,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -59,6 +62,21 @@ const platformConfig: Record<
     base: "bg-black",
     hover: "hover:bg-gray-800",
     icon: FaXTwitter,
+  },
+  email: {
+    base: "bg-gray-500",
+    hover: "hover:bg-gray-600",
+    icon: FaEnvelope,
+  },
+  messenger: {
+    base: "bg-blue-500",
+    hover: "hover:bg-blue-600",
+    icon: FaFacebookMessenger,
+  },
+  discord: {
+    base: "bg-purple-500",
+    hover: "hover:bg-purple-600",
+    icon: FaDiscord,
   },
 };
 
