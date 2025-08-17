@@ -1,6 +1,6 @@
 {
   "name": "@tsaddict/react-social-share",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight React social share buttons with Tailwind animations and React Icons.",
   "license": "MIT",
   "type": "module",
