@@ -1,0 +1,40 @@
+{
+  "name": "@tsaddict/react-social-share",
+  "version": "0.1.0",
+  "description": "Lightweight React social share buttons with Tailwind animations and React Icons.",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "react-icons": ">=4.0.0"
+  },
+  "keywords": [
+    "react",
+    "share",
+    "social",
+    "tailwind",
+    "react-icons"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}
