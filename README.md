@@ -6,7 +6,7 @@ A lightweight, modern React component library for social media sharing with beau
 
 - **6 Social Platforms**: Facebook, Twitter, LinkedIn, WhatsApp, Telegram, and Reddit
 - **Beautiful Animations**: Smooth hover effects with scale transforms and color transitions
-- **Tailwind CSS Ready**: Built with Tailwind CSS for easy customization
+- **Tailwind CSS Ready**: Built with Tailwind CSS for easy customization (requires Tailwind CSS setup)
 - **TypeScript Support**: Full TypeScript support with proper type definitions
 - **Accessibility**: ARIA labels and semantic HTML for screen readers
 - **Responsive Design**: Mobile-friendly with proper touch targets
@@ -19,6 +19,65 @@ A lightweight, modern React component library for social media sharing with beau
 npm install @tsaddict/react-social-share
 ```
 
+### Tailwind CSS Setup
+
+Since this package uses Tailwind CSS utility classes, you need to have Tailwind CSS configured in your project:
+#### For Tailwind CSS v3 (Stable)
+
+1. **Install Tailwind CSS:**
+   ```bash
+   npm install -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p
+   ```
+
+2. **Configure your `tailwind.config.js`:**
+   ```js
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     content: [
+       "./src/**/*.{js,jsx,ts,tsx}",
+       "./node_modules/@tsaddict/react-social-share/**/*.{js,jsx,ts,tsx}"
+     ],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
+
+3. **Import Tailwind in your CSS:**
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+#### For Tailwind CSS v4 (Alpha/Beta)
+
+1. **Install Tailwind CSS v4:**
+   ```bash
+   npm install -D tailwindcss@next
+   ```
+
+2. **Create `tailwind.config.ts`:**
+   ```ts
+   import type { Config } from 'tailwindcss'
+   
+   export default {
+     content: [
+       "./src/**/*.{js,jsx,ts,tsx}",
+       "./node_modules/@tsaddict/react-social-share/**/*.{js,jsx,ts,tsx}"
+     ],
+   } satisfies Config
+   ```
+
+3. **Import Tailwind in your CSS:**
+   ```css
+   @import "tailwindcss";
+   ```
+
+**Note**: Tailwind v4 is still in development. For production apps, we recommend using v3.
+
 ### Peer Dependencies
 
 This package requires the following peer dependencies:
@@ -27,9 +86,12 @@ This package requires the following peer dependencies:
 {
   "react": ">=17.0.0",
   "react-dom": ">=17.0.0",
-  "react-icons": ">=4.0.0"
+  "react-icons": ">=4.0.0",
+  "tailwindcss": ">=3.0.0"
 }
 ```
+
+**Important**: You must have Tailwind CSS configured in your project for the styling to work. The components use Tailwind utility classes that need to be processed by Tailwind CSS.
 
 Make sure you have these installed in your project.
 
