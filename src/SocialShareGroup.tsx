@@ -14,7 +14,7 @@ type Props = {
 
 const ALL: Platform[] = [
   "facebook",
-  "twitter",
+  "X",
   "linkedin",
   "whatsapp",
   "telegram",

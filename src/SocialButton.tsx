@@ -17,8 +17,8 @@ type Props = {
   label?: string; // optional custom label text
   className?: string; // allow consumers to extend Tailwind classes
   iconClassName?: string; // tweak icon size if needed
-  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>; // custom icon component
-  iconProps?: React.ComponentProps<"svg">; // props to pass to the icon (e.g. size, color)
+  icon?: React.ComponentType<import("react-icons").IconBaseProps>; // custom icon component using react-icons props
+  iconProps?: import("react-icons").IconBaseProps; // props to pass to the icon (e.g. size, color)
 };
 
 const platformConfig: Record<
@@ -27,7 +27,6 @@ const platformConfig: Record<
     base: string;
     hover: string;
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-    defaultLabel?: string;
   }
 > = {
   facebook: {
@@ -83,20 +82,17 @@ const SocialButton: React.FC<Props> = ({
       target="_blank"
       rel="noopener noreferrer"
       className={[
-        "inline-flex items-center gap-2 rounded-lg px-4 py-2 font-medium shadow-md",
+        "shadow-md",
         "transition-all duration-300 transform hover:scale-110 active:scale-95",
         cfg.base,
         cfg.hover,
         className,
       ].join(" ")}
-      aria-label={`Share on ${cfg.defaultLabel ?? platform}`}
+      aria-label={`Share on ${label ?? platform}`}
       data-testid={`social-button-${platform}`}
     >
-      <span className={["", iconClassName].join(" ")}>
-        <IconComponent {...iconProps} />
-      </span>
-      <span className="whitespace-nowrap">
-        {label ?? cfg.defaultLabel ?? platform}
+      <span className={["text-lg", iconClassName].join(" ")}>
+        <IconComponent size={24} {...iconProps} />
       </span>
     </a>
   );
