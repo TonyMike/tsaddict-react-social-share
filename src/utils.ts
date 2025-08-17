@@ -1,10 +1,10 @@
 export type Platform =
   | "facebook"
-  | "twitter"
   | "linkedin"
   | "whatsapp"
   | "telegram"
-  | "reddit";
+  | "reddit"
+  | "X";
 
 export const getShareUrl = (platform: Platform, url: string, text?: string) => {
   switch (platform) {
@@ -12,10 +12,7 @@ export const getShareUrl = (platform: Platform, url: string, text?: string) => {
       return `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         url
       )}`;
-    case "twitter":
-      return `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-        url
-      )}&text=${encodeURIComponent(text || "")}`;
+
     case "linkedin":
       return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
         url
@@ -33,5 +30,9 @@ export const getShareUrl = (platform: Platform, url: string, text?: string) => {
       return `https://www.reddit.com/submit?url=${encodeURIComponent(
         url
       )}&title=${encodeURIComponent(text || "")}`;
+    case "X":
+      return `https://x.com/intent/tweet?url=${encodeURIComponent(
+        url
+      )}&text=${encodeURIComponent(text || "")}`;
   }
 };
