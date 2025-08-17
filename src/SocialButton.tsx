@@ -92,7 +92,7 @@ const SocialButton: React.FC<Props> = ({
       data-testid={`social-button-${platform}`}
     >
       <span className={["text-lg", iconClassName].join(" ")}>
-        <IconComponent size={24} {...iconProps} />
+        <IconComponent size={28} {...iconProps} />
       </span>
     </a>
   );
